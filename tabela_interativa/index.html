@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuímicaPro - Tabela Periódica</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div style="font-weight: bold; font-size: 1.2rem;">QUÍMICAPRO</div>
+        <input type="text" id="search-input" placeholder="Pesquise..." oninput="searchElement()">
+        <button class="btn-orbital" onclick="toggleOrbitals()" id="orbBtn">Ver Orbitais</button>
+    </nav>
+
+    <div class="main-wrapper">
+        <div class="legend">
+            <div class="legend-item" onmouseover="filter('reactive-nonmetal')" onmouseout="clearFilter()"><span class="dot" style="background: var(--nonmetal)"></span> Não-metais</div>
+            <div class="legend-item" onmouseover="filter('transition-metal')" onmouseout="clearFilter()"><span class="dot" style="background: var(--transition)"></span> Transição</div>
+            <div class="legend-item" onmouseover="filter('noble-gas')" onmouseout="clearFilter()"><span class="dot" style="background: var(--noble)"></span> Gases Nobres</div>
+            <div class="legend-item" onmouseover="filter('post-transition-metal')" onmouseout="clearFilter()"><span class="dot" style="background: var(--post-trans)"></span> Pós-transição</div>
+            <div class="legend-item" onmouseover="filter('alkali-metal')" onmouseout="clearFilter()"><span class="dot" style="background: var(--alkali)"></span> Alcalinos</div>
+            <div class="legend-item" onmouseover="filter('lanthanide')" onmouseout="clearFilter()"><span class="dot" style="background: var(--lanthanide)"></span> Lantanídeos</div>
+            <div class="legend-item" onmouseover="filter('alkaline-earth-metal')" onmouseout="clearFilter()"><span class="dot" style="background: var(--alkaline)"></span> Alcalino-terrosos</div>
+            <div class="legend-item" onmouseover="filter('actinide')" onmouseout="clearFilter()"><span class="dot" style="background: var(--actinide)"></span> Actinídeos</div>
+        </div>
+
+        <div id="table" class="periodic-table"></div>
+    </div>
+
+    <div id="modal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="card-inner" id="card-inner" onclick="toggleFlip()">
+                <div class="card-face card-front" id="m-border-front">
+                    <div id="m-number" style="font-weight: bold; color: #bbb;"></div>
+                    <div class="modal-symbol" id="m-symbol"></div>
+                    <h2 id="m-name" style="margin: 0;"></h2>
+                    <div style="font-size: 0.7rem; margin-top:15px; color:#aaa">CLIQUE PARA GIRAR ↺</div>
+                </div>
+                <div class="card-face card-back" id="m-border-back">
+                    <img id="m-img" src="hidrogenio.jpg" class="element-img">
+                    <p id="m-desc" style="font-size: 0.9rem; color: #555;"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
